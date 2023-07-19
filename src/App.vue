@@ -140,6 +140,11 @@ letter-spacing: .5rem;
   border-radius: .5rem;
   padding: .5rem;
 }
+@media (min-width:300px){
+        #score{
+          font-size: 1.5rem;
+        }
+      }
 
 button{
   border-style: solid;

@@ -21,7 +21,8 @@ const nextGame = () =>{
     loser.value=false;
 }
 const checkAnswer = (answer) =>{
-    afterGame.value = true;
+   
+if(!afterGame.value){
   
   if (answer.correct){
    winner.value=true;
@@ -30,7 +31,7 @@ const checkAnswer = (answer) =>{
     loser.value= true;
     emit('update-score', winner.value);
   }
-
+    afterGame.value = true;}
 }
 
  
@@ -41,14 +42,14 @@ const checkAnswer = (answer) =>{
 <template>
   <div >
  
-    <button v-show="afterGame" @click="nextGame()">Next question</button>
+   
  
     <div class="question"> {{ model.question }}</div>
     <div :class="loser? 'rubberBand' : ''">
      <span v-show="loser"   :class="winner? '' : 'wrong '" >Wrong answer!</span>
     </div>
      <div :class="winner? 'animated-flip' : 'winner'"> <span v-show="winner" :class="winner? 'congrats animated-flip' : 'winner'">Congrats! Thats correct!</span></div>
-
+ <button v-show="afterGame" class="next-game" @click="nextGame()">Next question</button>
     <div :class="winner? 'vibrate-1' : 'vibrate-2'">
     <div :class="afterGame ? (answer.correct ? 'after-true' : 'after-false') : 'answer'" @click="checkAnswer(answer)" v-for="answer in model.answers" :key="answer.answer"> {{ answer.answer }}  </div>
   </div>
@@ -76,7 +77,7 @@ const checkAnswer = (answer) =>{
   font-family:   monospace;
   font-weight: 600;
   color: rgb(42, 49, 43);
-  font-size: 3rem;
+  font-size: 2.0rem;
 
 }
 
@@ -89,6 +90,7 @@ const checkAnswer = (answer) =>{
   background-color: rgba(55, 192, 37, 0.527);
   transition: all .2s;
  
+ 
 }
 .after-false{
     margin: 1rem;
@@ -98,6 +100,7 @@ const checkAnswer = (answer) =>{
   border-style: groove;
   background-color: rgba(153, 47, 47, 0.527);
   transition: all .2s;
+ 
    
 }
 .congrats{
@@ -112,5 +115,14 @@ const checkAnswer = (answer) =>{
     font-family:   monospace;
     font-size: 2rem;
 
+}
+
+.next-game{
+
+  margin-top: 0.5rem;
+ /*  position: absolute;
+  right: 19vw;
+  bottom:-3rem;
+  z-index: 1000; */
 }
 </style>

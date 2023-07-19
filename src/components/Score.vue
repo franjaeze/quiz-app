@@ -8,7 +8,7 @@
     })
 
     const scoreFinal = ref(props.score);
-    const percentageScore = ( scoreFinal.value.correctAnswer /scoreFinal.value.totalAnswer )*100
+    const percentageScore = Math.round(( scoreFinal.value.correctAnswer /scoreFinal.value.totalAnswer )*100)
     const endTimefinal = ref(props.endTime);
 
     onMounted(() => {
