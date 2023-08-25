@@ -324,7 +324,7 @@ answers: [  {  answer: "Sucarcane", correct: true },
         }
       ]
 },
-{ name: "Coffe",
+{ name: "Coffee",
         questions:  [
             {
               question: "Where was coffee first discovered?",
